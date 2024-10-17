@@ -91,6 +91,7 @@ const (
 	GrantTypeRefreshToken      = valueRefreshToken
 	GrantTypeAuthorizationCode = "authorization_code"
 	GrantTypeClientCredentials = "client_credentials"
+	GrantTypeDeviceCode        = "urn:ietf:params:oauth:grant-type:device_code"
 )
 
 // Client Auth Method strings.
@@ -186,6 +187,7 @@ const (
 // Endpoints.
 const (
 	EndpointAuthorization              = "authorization"
+	EndpointDeviceAuthorization        = "device-authorization"
 	EndpointToken                      = "token"
 	EndpointUserinfo                   = "userinfo"
 	EndpointIntrospection              = "introspection"
@@ -212,22 +214,23 @@ const (
 
 // Paths.
 const (
-	EndpointPathConsent                           = "/consent"
+	EndpointPathConsent                    = "/consent/openid"
+	EndpointPathConsentDecision            = EndpointPathConsent + "/decision"
+	EndpointPathRFC8628UserVerificationURL = EndpointPathConsent + "/" + EndpointDeviceAuthorization
+
 	EndpointPathWellKnownOpenIDConfiguration      = "/.well-known/openid-configuration"
 	EndpointPathWellKnownOAuthAuthorizationServer = "/.well-known/oauth-authorization-server"
 	EndpointPathJWKs                              = "/jwks.json"
 
 	EndpointPathRoot = "/api/oidc"
 
-	EndpointPathAuthorization = EndpointPathRoot + "/" + EndpointAuthorization
-	EndpointPathToken         = EndpointPathRoot + "/" + EndpointToken
-	EndpointPathUserinfo      = EndpointPathRoot + "/" + EndpointUserinfo
-	EndpointPathIntrospection = EndpointPathRoot + "/" + EndpointIntrospection
-	EndpointPathRevocation    = EndpointPathRoot + "/" + EndpointRevocation
-
+	EndpointPathAuthorization              = EndpointPathRoot + "/" + EndpointAuthorization
+	EndpointPathToken                      = EndpointPathRoot + "/" + EndpointToken
+	EndpointPathUserinfo                   = EndpointPathRoot + "/" + EndpointUserinfo
+	EndpointPathIntrospection              = EndpointPathRoot + "/" + EndpointIntrospection
+	EndpointPathRevocation                 = EndpointPathRoot + "/" + EndpointRevocation
+	EndpointPathDeviceAuthorization        = EndpointPathRoot + "/" + EndpointDeviceAuthorization
 	EndpointPathPushedAuthorizationRequest = EndpointPathRoot + "/" + EndpointPushedAuthorizationRequest
-
-	EndpointPathRFC8628UserVerificationURL = EndpointPathRoot + "/device-code/user-verification"
 )
 
 // Authentication Method Reference Values https://datatracker.ietf.org/doc/html/rfc8176

@@ -81,7 +81,7 @@ func FirstFactorPOST(delayFunc middlewares.TimingAttackDelayFunc) middlewares.Re
 
 		userSession, err := provider.GetSession(ctx.RequestCtx)
 		if err != nil {
-			ctx.Logger.Errorf("%s", err)
+			ctx.Logger.WithError(err).Errorf("Error occurred attempting to load session.")
 
 			respondUnauthorized(ctx, messageAuthenticationFailed)
 
@@ -152,6 +152,7 @@ func FirstFactorPOST(delayFunc middlewares.TimingAttackDelayFunc) middlewares.Re
 
 		if bodyJSON.Workflow == workflowOpenIDConnect {
 			handleOIDCWorkflowResponse(ctx, &userSession, bodyJSON.TargetURL, bodyJSON.WorkflowID)
+			handleOIDCWorkflowResponse(ctx, &userSession, bodyJSON.WorkflowID)
 		} else {
 			Handle1FAResponse(ctx, bodyJSON.TargetURL, bodyJSON.RequestMethod, userSession.Username, userSession.Groups)
 		}

@@ -94,9 +94,9 @@ type bodyPreferred2FAMethod struct {
 type bodyFirstFactorRequest struct {
 	Username       string `json:"username" valid:"required"`
 	Password       string `json:"password" valid:"required"`
-	TargetURL      string `json:"targetURL"`
 	Workflow       string `json:"workflow"`
 	WorkflowID     string `json:"workflowID"`
+	TargetURL      string `json:"targetURL"`
 	RequestMethod  string `json:"requestMethod"`
 	KeepMeLoggedIn *bool  `json:"keepMeLoggedIn"`
 	// KeepMeLoggedIn: Cannot require this field because of https://github.com/asaskevich/govalidator/pull/329

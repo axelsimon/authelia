@@ -30,6 +30,7 @@ func NewOpenIDConnectWellKnownConfiguration(c *schema.IdentityProvidersOpenIDCon
 					GrantTypeImplicit,
 					GrantTypeClientCredentials,
 					GrantTypeRefreshToken,
+					GrantTypeDeviceCode,
 				},
 				ResponseModesSupported: []string{
 					ResponseModeFormPost,

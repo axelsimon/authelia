@@ -14,6 +14,7 @@ import (
 	"authelia.com/provider/oauth2/handler/openid"
 	"authelia.com/provider/oauth2/handler/par"
 	"authelia.com/provider/oauth2/handler/pkce"
+	"authelia.com/provider/oauth2/handler/rfc8628"
 	"authelia.com/provider/oauth2/i18n"
 	"authelia.com/provider/oauth2/token/jwt"
 	"github.com/hashicorp/go-retryablehttp"
@@ -230,6 +231,7 @@ func (c *Config) LoadHandlers(store *Store) {
 			Signer: c.Signer,
 			Config: c,
 		}
+	}
 
 	handlerCodeTokenEndpoint := &rfc8628.DeviceCodeTokenHandler{
 		Storage:  store,
